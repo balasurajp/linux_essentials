@@ -11,10 +11,13 @@ ExecStart=${service_docker_command}
 WantedBy=multi-user.target"
 
 echo "$sysservice_script" > "$service_name".service
+echo "${service_name}.service file has been created successfully."
+
 sudo cp "$service_name".service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl start "$service_name"
 sudo systemctl enable "$service_name"
+echo "${service_name}.service file has been enabled successfully."
 
 sleep 5
 sudo systemctl status "$service_name"
